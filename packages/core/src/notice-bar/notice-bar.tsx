@@ -1,6 +1,6 @@
 import { View } from "@tarojs/components"
 import { ViewProps } from "@tarojs/components/types/View"
-import { nextTick } from "@tarojs/taro"
+import { nextTick, useDidShow } from "@tarojs/taro"
 import classNames from "classnames"
 import * as React from "react"
 import {
@@ -143,7 +143,10 @@ function NoticeBar(props: NoticeBarProps) {
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(start, [])
+  useDidShow(()=>{
+    console.log('notice-bar - useDidShow');
+    start()
+  })
 
   return (
     <View
